@@ -7,7 +7,6 @@ A robust and extensible [Model Context Protocol (MCP)](https://modelcontextproto
 - **Transport Agnostic**: Supports multiple communication protocols including SSE and stdio
 - **Dynamic Capability Management**: Runtime addition/removal of tools, resources, and prompts
 - **Notification Broadcasting**: Efficiently propagates notifications to all connected clients
-- **Android Integration**: Seamlessly integrates with Android's logging and concurrency frameworks
 - **Dependency Injection**: Modular architecture with built-in dependency injection support
 
 ## Installation

@@ -113,7 +113,6 @@ class MyMcpServer() : McpServer(name = "AppName", version = "1.0.0") {
 }
 ```
 ## Debug Your MCP Server App
-
 To streamline development and troubleshooting, you can use the `mcp-inspector.sh` script included in the demo to launch the official **MCP Inspector**—a web-based debugging tool provided by the Model Context Protocol team.  
 
 For setup instructions and detailed usage, refer to the official repository:  

@@ -85,14 +85,14 @@ data class McpToolsRequest(val name:String,
                 params.removeAt(0)
             }
             val parameters = params.toTypedArray()
-            println("_createRegisteredTool parameters: ${parameters.contentToString()}")
+            println("[CallToolRequest] request parameters: ${parameters.contentToString()}")
             val result = try {
                 request.function.javaMethod!!.invoke(request.obj, *parameters)
             }catch (e: Exception){
                 e.printStackTrace()
                 e.message
             }
-            println("_createRegisteredTool result: ${result}")
+            println("[CallToolRequest] result: ${result}")
             createToolResult(result)
         }
     }
@@ -161,10 +161,9 @@ data class McpToolsRequest(val name:String,
      */
     private fun buildMethodParameterValues(request: McpToolsRequest,callToolRequest: CallToolRequest): List<Any?> {
         val args = callToolRequest.arguments.jsonObject.toMap()
-        println("buildMethodParameterValues ${callToolRequest.arguments}")
         val progressToken = callToolRequest._meta.toMap().getOrDefault("progressToken","").toString()
-        println("mcp client parameters: ${args}，token is ${progressToken}")
-        println("mcp server parameters: ${request.function.parameters.map { it.name }.toTypedArray().contentToString()}")
+        println("mcp client request parameters: ${args}，with progressToken: $progressToken")
+        println("mcp server tool parameters: ${request.function.parameters.map { it.name }.toTypedArray().contentToString()}")
         return request.function.parameters.map { p ->
             if (p.type.classifier == Notifier::class){
                 notifierBuilder?.invoke(progressToken)?: DefaultNotifier(progressToken)
